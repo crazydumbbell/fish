@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import { list } from "postcss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,9 +11,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  let homelink = "/";
+  let listlink = "/list";
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex justify-center">
+          <Link href={homelink}>홈</Link>
+          <Link className="ml-10" href={listlink}>
+            리스트
+          </Link>
+        </div>
+        {children}
+      </body>
     </html>
   );
 }
